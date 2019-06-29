@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TheExpandable.StoreApi</name>
+    </assembly>
+    <members>
+        <member name="M:TheExpandable.StoreApi.Controllers.HomeController.GetItem(System.String)">
+            <summary>
+            Get an Item By Id
+            </summary>
+            <param name="itemId">The Id of the item you want to get</param>
+            <returns>An object of Items to be a list later</returns>
+        </member>
+    </members>
+</doc>
