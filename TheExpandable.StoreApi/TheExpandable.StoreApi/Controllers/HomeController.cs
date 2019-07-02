@@ -1,30 +1,49 @@
+using System;
 using Microsoft.AspNetCore.Mvc;
+using TheExpandable.DataAccess;
+using TheExpandable.Entities;
 
 namespace TheExpandable.StoreApi.Controllers
 {
     
+    /// <summary>
+    /// Home Controller, the entry point
+    /// </summary>
     [Route("Home")]
     public class HomeController : Controller
     {
-        [Route("~/")]
-        [Route("Index")]
-        [HttpGet]
-        public object Index(string id)
+        private readonly IItemRepo _itemRepo;
+        /// <summary>
+        /// Constructor of the Home Controller
+        /// </summary>
+        /// <param name="itemRepo"></param>
+        public HomeController(IItemRepo itemRepo)
         {
-            return string.IsNullOrEmpty(id) ? new {ID = "No ID Provided"} : new {ID=id};
+            _itemRepo = itemRepo;
         }
 
+        /// <summary>
+        /// Get an Item By Id
+        /// </summary>
+        /// <param name="itemId">The Id of the item you want to get</param>
+        /// <returns>An object of Items to be a list later</returns>
         [Route("GetItem/{id?}")]
         [HttpGet]
-        public object GetItem(string id)
+        public IActionResult GetItem(string itemId)
         {
-            return string.IsNullOrEmpty(id) ? new {ID = "No ID Provided"} : new {ID=id};
+            try
+            {
+                if (string.IsNullOrEmpty(itemId))
+                    return BadRequest("No ID Provided");
+
+                var result = _itemRepo.Get(itemId);
+                return Ok(result);
+            }
+            catch (Exception )
+            {
+                return StatusCode(500, "Something went wrong");
+            }
         }
 
-        [HttpGet]
-        public IActionResult Get()
-        {
-            return Ok(new {Name="Ben"});
-        }
     }
 }
