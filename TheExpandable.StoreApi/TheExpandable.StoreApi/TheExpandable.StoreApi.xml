@@ -4,6 +4,17 @@
         <name>TheExpandable.StoreApi</name>
     </assembly>
     <members>
+        <member name="T:TheExpandable.StoreApi.Controllers.HomeController">
+            <summary>
+            Home Controller, the entry point
+            </summary>
+        </member>
+        <member name="M:TheExpandable.StoreApi.Controllers.HomeController.#ctor(TheExpandable.DataAccess.IItemRepo)">
+            <summary>
+            Constructor of the Home Controller
+            </summary>
+            <param name="itemRepo"></param>
+        </member>
         <member name="M:TheExpandable.StoreApi.Controllers.HomeController.GetItem(System.String)">
             <summary>
             Get an Item By Id

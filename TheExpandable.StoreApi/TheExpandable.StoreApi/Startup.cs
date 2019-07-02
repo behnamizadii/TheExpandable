@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+using TheExpandable.DataAccess;
 using TheExpandable.StoreApi.Controllers;
  
 namespace TheExpandable.StoreApi
@@ -40,6 +42,7 @@ namespace TheExpandable.StoreApi
                 
                 setupAction.IncludeXmlComments(xmlCommentsFullPath);
             });
+            services.Add(new ServiceDescriptor(typeof(IItemRepo), new ItemRepo(new DBContext())));
             services.AddMvc();
         }
 
