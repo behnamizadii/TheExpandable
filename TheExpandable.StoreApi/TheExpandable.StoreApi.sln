@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheExpandable.DataAccess", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheExpandable.Entities", "TheExpandable.Entities\TheExpandable.Entities.csproj", "{5505F574-D295-4308-A516-80D5ADD1B9A9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheExpandable.DataAccess.Tests", "TheExpandable.DataAccess.Tests\TheExpandable.DataAccess.Tests.csproj", "{9B6579BA-5D01-46FE-BBE3-AAB89DA8EA08}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{5505F574-D295-4308-A516-80D5ADD1B9A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5505F574-D295-4308-A516-80D5ADD1B9A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5505F574-D295-4308-A516-80D5ADD1B9A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B6579BA-5D01-46FE-BBE3-AAB89DA8EA08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B6579BA-5D01-46FE-BBE3-AAB89DA8EA08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B6579BA-5D01-46FE-BBE3-AAB89DA8EA08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B6579BA-5D01-46FE-BBE3-AAB89DA8EA08}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

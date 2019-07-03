@@ -22,11 +22,18 @@ namespace TheExpandable.DataAccess
             if(item == null) throw new NullReferenceException();
 
             return item;
-        } 
+        }
+
+        public List<Item> GetAll()
+        {
+            var items = DbContext.Items.Where(i => i.ItemId != null).ToList();
+            return items;
+        }
     }
 
     public interface IItemRepo
     {
         Item Get(string itemId);
+        List<Item> GetAll();
     }
 }
