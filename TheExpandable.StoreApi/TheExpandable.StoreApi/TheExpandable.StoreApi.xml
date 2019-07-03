@@ -22,5 +22,11 @@
             <param name="itemId">The Id of the item you want to get</param>
             <returns>An object of Items to be a list later</returns>
         </member>
+        <member name="M:TheExpandable.StoreApi.Controllers.HomeController.GetAll">
+            <summary>
+            Get all the Items
+            </summary>
+            <returns>A list of Items</returns>
+        </member>
     </members>
 </doc>

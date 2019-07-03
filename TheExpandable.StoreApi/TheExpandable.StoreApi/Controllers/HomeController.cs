@@ -45,5 +45,24 @@ namespace TheExpandable.StoreApi.Controllers
             }
         }
 
+        /// <summary>
+        /// Get all the Items
+        /// </summary>
+        /// <returns>A list of Items</returns>
+        [Route("GetAll")]
+        [HttpGet]
+        public IActionResult GetAll()
+        {
+            try
+            {
+                var result = _itemRepo.GetAll();
+                return Ok(result);
+            }
+            catch (Exception)
+            {
+                return StatusCode(500, "Somehting went wrong");
+            }
+        }
+
     }
 }
