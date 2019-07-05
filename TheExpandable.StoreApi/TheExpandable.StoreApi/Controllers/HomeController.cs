@@ -1,4 +1,5 @@
 using System;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using TheExpandable.DataAccess;
 using TheExpandable.Entities;
@@ -10,6 +11,7 @@ namespace TheExpandable.StoreApi.Controllers
     /// Home Controller, the entry point
     /// </summary>
     [Route("Home")]
+    [EnableCors("CorsPolicy")]
     public class HomeController : Controller
     {
         private readonly IItemRepo _itemRepo;
