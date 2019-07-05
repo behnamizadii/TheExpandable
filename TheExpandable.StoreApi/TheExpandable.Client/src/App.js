@@ -3,19 +3,10 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { Table } from 'reactstrap';
 import NavBar from './Navbar';
 import axios from 'axios';
+import StoreItems from './components/Items'
 
 class App extends Component {
-  state = {
-    storeItems: []
-  }
 
-  componentWillMount(){
-    axios.get('https://localhost:5001/Home/GetAll').then((response) =>{
-      this.setState({
-        storeItems: response.data
-      })
-    });
-  }
   render(){
     return (
       <Router>
@@ -68,10 +59,6 @@ function Topics({ match }) {
   );
 }
 
-function Item({ match }) {
-  return <h3>Requested Param: {match.params.id}</h3>;
-}
-
 function Items({ match }) {
   return (
     <div>
@@ -86,7 +73,7 @@ function Items({ match }) {
         </li>
       </ul>
 
-      <Route path={`${match.path}/:id`} component={Item} />
+      <Route path={`${match.path}/:id`} component={StoreItems} />
       <Route
         exact
         path={match.path}

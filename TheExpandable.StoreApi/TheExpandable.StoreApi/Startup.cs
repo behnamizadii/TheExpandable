@@ -28,6 +28,12 @@ namespace TheExpandable.StoreApi
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(c => c.AddPolicy("CorsPolicy", builder =>
+            {
+                builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader();
+            }));
             services.AddSwaggerGen(setupAction =>
             {
                 setupAction.SwaggerDoc("LibraryOpenAPISpecification", 
@@ -44,6 +50,7 @@ namespace TheExpandable.StoreApi
             });
             services.Add(new ServiceDescriptor(typeof(IItemRepo), new ItemRepo(new DBContext())));
             services.AddMvc();
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
