@@ -1,18 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Reflection;
-using System.Threading.Tasks;
+using GraphQL;
+using GraphQL.Server;
+using GraphQL.Server.Ui.Playground;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
 using TheExpandable.DataAccess;
-using TheExpandable.StoreApi.Controllers;
- 
+using TheExpandable.StoreApi.GraphQL;
+
 namespace TheExpandable.StoreApi
 {
     public class Startup
@@ -48,9 +46,13 @@ namespace TheExpandable.StoreApi
                 
                 setupAction.IncludeXmlComments(xmlCommentsFullPath);
             });
-            services.Add(new ServiceDescriptor(typeof(IItemRepo), new ItemRepo(new DBContext())));
+            services.AddTransient<IItemRepository, ItemRepository>();
+            services.AddTransient<StoreDataContext>();
             services.AddMvc();
-            
+            services.AddScoped<IDependencyResolver>(s => new FuncDependencyResolver(s.GetRequiredService));
+            services.AddScoped<ItemQuery>();
+            services.AddGraphQL(o => { o.ExposeExceptions = true; })
+                .AddGraphTypes(ServiceLifetime.Scoped);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -72,13 +74,9 @@ namespace TheExpandable.StoreApi
                 setupAction.SwaggerEndpoint("/swagger/LibraryOpenAPISpecification/swagger.json", "Library API");
                 setupAction.RoutePrefix = ""; // this makes the swagger to be accessible from root/index.html
             });
+            app.UseGraphQL<StoreSchema>();
+            app.UseGraphQLPlayground(new GraphQLPlaygroundOptions());
             app.UseMvc();
-//            app.UseMvc(
-//                routes =>
-//                {
-//                    routes.MapRoute("default", "{controller=Home}/{action=Index}/{id?}");
-//            });
-
         }
     }
 }

@@ -1,0 +1,1 @@
+//      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}",

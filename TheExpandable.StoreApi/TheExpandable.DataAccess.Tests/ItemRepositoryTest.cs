@@ -4,13 +4,13 @@ using Xunit;
 
 namespace TheExpandable.DataAccess.Tests
 {
-    public class ItemRepoTest
+    public class ItemRepositoryTest
     {
-        private ItemRepo itemRepo;
+        private ItemRepository itemRepo;
 
-        public ItemRepoTest()
+        public ItemRepositoryTest()
         {
-            itemRepo = new ItemRepo(new DBContext());
+            itemRepo = new ItemRepository(new DBContext());
         }
         
         [Fact]
