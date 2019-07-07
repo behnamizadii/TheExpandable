@@ -14,12 +14,12 @@ namespace TheExpandable.StoreApi.Controllers
     [EnableCors("CorsPolicy")]
     public class HomeController : Controller
     {
-        private readonly IItemRepo _itemRepo;
+        private readonly IItemRepository _itemRepo;
         /// <summary>
         /// Constructor of the Home Controller
         /// </summary>
         /// <param name="itemRepo"></param>
-        public HomeController(IItemRepo itemRepo)
+        public HomeController(IItemRepository itemRepo)
         {
             _itemRepo = itemRepo;
         }
@@ -38,7 +38,7 @@ namespace TheExpandable.StoreApi.Controllers
                 if (string.IsNullOrEmpty(itemId))
                     return BadRequest("No ID Provided");
 
-                var result = _itemRepo.Get(itemId);
+                var result = _itemRepo.GetItemById(itemId);
                 return Ok(result);
             }
             catch (Exception )
@@ -57,7 +57,7 @@ namespace TheExpandable.StoreApi.Controllers
         {
             try
             {
-                var result = _itemRepo.GetAll();
+                var result = _itemRepo.GetAllItems();
                 return Ok(result);
             }
             catch (Exception)

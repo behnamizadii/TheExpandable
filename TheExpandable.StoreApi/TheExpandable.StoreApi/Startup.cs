@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
@@ -48,7 +49,7 @@ namespace TheExpandable.StoreApi
                 
                 setupAction.IncludeXmlComments(xmlCommentsFullPath);
             });
-            services.Add(new ServiceDescriptor(typeof(IItemRepo), new ItemRepo(new DBContext())));
+            services.AddTransient<IItemRepository, ItemRepository>();
             services.AddMvc();
             
         }
