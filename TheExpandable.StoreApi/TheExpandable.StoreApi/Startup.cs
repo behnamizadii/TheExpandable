@@ -50,6 +50,7 @@ namespace TheExpandable.StoreApi
                 setupAction.IncludeXmlComments(xmlCommentsFullPath);
             });
             services.AddTransient<IItemRepository, ItemRepository>();
+            services.AddTransient<StoreDataContext>();
             services.AddMvc();
             
         }
