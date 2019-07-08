@@ -51,6 +51,8 @@ namespace TheExpandable.StoreApi
             services.AddMvc();
             services.AddScoped<IDependencyResolver>(s => new FuncDependencyResolver(s.GetRequiredService));
             services.AddScoped<ItemQuery>();
+            services.AddScoped<StoreSchema>();
+            
             services.AddGraphQL(o => { o.ExposeExceptions = true; })
                 .AddGraphTypes(ServiceLifetime.Scoped);
         }
