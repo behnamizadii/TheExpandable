@@ -4,6 +4,30 @@
         <name>TheExpandable.StoreApi</name>
     </assembly>
     <members>
+        <member name="T:TheExpandable.StoreApi.Controllers.BasketController">
+            <summary>
+            Basket Controller
+            </summary>
+        </member>
+        <member name="M:TheExpandable.StoreApi.Controllers.BasketController.#ctor(TheExpandable.DataAccess.IBasketRepository)">
+            <summary>
+            Basket Controller Constructor
+            </summary>
+            <param name="basketRepo"></param>
+        </member>
+        <member name="M:TheExpandable.StoreApi.Controllers.BasketController.Add(System.String)">
+            <summary>
+            Add an Item to the basket
+            </summary>
+            <returns>Basket information</returns>
+        </member>
+        <member name="M:TheExpandable.StoreApi.Controllers.BasketController.Remove(System.String)">
+            <summary>
+            Remove Item from basket
+            </summary>
+            <param name="itemId"></param>
+            <returns>Basket information</returns>
+        </member>
         <member name="T:TheExpandable.StoreApi.Controllers.HomeController">
             <summary>
             Home Controller, the entry point
